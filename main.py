@@ -181,4 +181,8 @@ async def create_record(request: Request, api_key: str = Depends(get_api_key)):
             raise HTTPException(status_code=resp.status_code, detail="Failed to create record in Feishu")
 
     # 返回飞书接口的响应
-    return resp.json()
+    return resp.json() 
+
+@app.get("/health")
+async def health_check():
+    return {"status": "ok"}
